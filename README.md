@@ -10,6 +10,8 @@ csv files are published by Land Information New Zealand
 
 They can be obtained from: http://www.linz.govt.nz/sea/tides/tide-predictions
 
+The "icalendar" python module is a required dependency
+
 To convert files, run:
 
 python NZ_tides_csv_to_ical.py <tide_csv>
