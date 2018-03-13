@@ -88,6 +88,6 @@ ENV/
 # Rope project settings
 .ropeproject
 
-# Project specific data files
+# Project-specific data files
 *.csv
 *.ics
