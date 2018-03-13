@@ -20,8 +20,6 @@ from datetime import datetime
 from datetime import timedelta
 from time import mktime
 
-# amount of time either side of high tide to block out
-# "2" will block out two hours before and two hours after
 leeway=2
 
 # the first two lines of the csv files are header, we ignore these
@@ -33,6 +31,17 @@ cal.add('version', '1.0')
 
 # get the name of the csv file we are getting the data from
 csv_file = sys.argv[1]
+
+# amount of time either side of high tide to block out
+# "2" will block out two hours before and two hours after
+# by default, time is +/- 2 hours
+# setting the second variable to a number will use that number instead
+if sys.argv[2] == "":
+	leeway = 2
+else:
+	leeway = int(sys.argv[2])
+
+print leeway
 
 # figure out the location name from the file name
 tide_location=sys.argv[1].split('_')[0]
