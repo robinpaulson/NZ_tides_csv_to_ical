@@ -21,4 +21,6 @@ where "tide_csv" is the appropriate csv file for your location,
 and "leeway" is the time between the start of the event and high tide, also the time between high tide and the end of the event
 (that is, the length of the event is equal to 2 x <leeway>)
 
+See the "example_screenshot_akl.png" file for a screenshot of a Thunderbird calendar with tides for Auckland. The events are 2 hours long, that is the "leeway" variable is set to 2.
+
 Licence: GNU GPL v3+
