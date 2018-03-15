@@ -18,7 +18,7 @@ python NZ_tides_csv_to_ical.py <tide_csv> <leeway>
 
 where <tide_csv> is the appropriate csv file for your location,
 
-<leeway> is the time between the start of the event and high tide, also the time between high tide and the end of the event
+and <leeway> is the time between the start of the event and high tide, also the time between high tide and the end of the event
 (that is, the length of the event is equal to 2 x <leeway>
 
 Licence: GNU GPL v3+
