@@ -14,11 +14,11 @@ The "icalendar" python module is a required dependency
 
 To convert files, run:
 
-python NZ_tides_csv_to_ical.py <tide_csv> <leeway>
+python NZ_tides_csv_to_ical.py "tide_csv" "leeway"
 
-where <tide_csv> is the appropriate csv file for your location,
+where "tide_csv" is the appropriate csv file for your location,
 
-and <leeway> is the time between the start of the event and high tide, also the time between high tide and the end of the event
-(that is, the length of the event is equal to 2 x <leeway>
+and "leeway" is the time between the start of the event and high tide, also the time between high tide and the end of the event
+(that is, the length of the event is equal to 2 x <leeway>)
 
 Licence: GNU GPL v3+
