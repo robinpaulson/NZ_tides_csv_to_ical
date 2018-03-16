@@ -10,6 +10,7 @@
 # Licence: GNU GPL 3+
 
 
+import calendar
 import csv
 import icalendar
 import os
@@ -44,14 +45,18 @@ else:
 print leeway
 
 # figure out the location name from the file name
-tide_location=sys.argv[1].split('_')[0]
+#tide_location=sys.argv[1].split('_')[0]
 
 with open(csv_file, 'rb') as csvfile:
 	tide_reader = csv.reader(csvfile, delimiter=',')
 	mycsv=list(tide_reader)
-#number of lines is hardcoded in. TODO: figure out how to do this dynamically
-	while (read_line < 368):
-		tide_year=mycsv[read_line][3]
+	tide_location=mycsv[0][1]
+	tide_year=mycsv[read_line][3]
+	if calendar.isleap(int(tide_year))==True:
+		num_readlines=369
+	else:
+		num_readlines=368
+	while (read_line < num_readlines):
 		tide_month=mycsv[read_line][2]
 		tide_date=mycsv[read_line][0]
 		read_line=read_line+1
