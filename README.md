@@ -6,7 +6,7 @@ Author: Robin Paulson, robin@bumblepuppy.org
 
 https://github.com/robinpaulson/NZ_tides_csv_to_ical
 
-csv files are published by Land Information New Zealand
+csv files are published by Land Information New Zealand under a Creative Commons Licence and are freely distributable
 
 They can be obtained from: http://www.linz.govt.nz/sea/tides/tide-predictions
 
@@ -19,8 +19,8 @@ python NZ_tides_csv_to_ical.py "tide_csv" "leeway"
 where "tide_csv" is the appropriate csv file for your location,
 
 and "leeway" is the time between the start of the event and high tide, also the time between high tide and the end of the event
-(that is, the length of the event is equal to 2 x <leeway>)
+(that is, the length of the event is equal to 2 x "leeway")
 
-See the "example_screenshot_akl.png" file for a screenshot of a Thunderbird calendar with tides for Auckland. The events are 2 hours long, that is the "leeway" variable is set to 2.
+See the "example_screenshot_akl.png" file for a screenshot of a Thunderbird calendar with tides for Auckland. The events are 4 hours long, that is the "leeway" variable is set to 2.
 
 Licence: GNU GPL v3+
