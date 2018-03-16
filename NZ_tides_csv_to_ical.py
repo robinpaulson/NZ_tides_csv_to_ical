@@ -5,12 +5,15 @@
 # They can be obtained from: http://www.linz.govt.nz/sea/tides/tide-predictions
 # To convert: ./NZ_tides_csv_to_ical.py "tide_csv" "leeway"
 # where "tide_csv" is the appropriate csv file for your location
-# and "leeway" is the amount of time either side of high tide to block out for the calendar event
+# and "leeway" is the amount of time either side of high tide to block out for
+# the calendar event
+
 # Author: Robin Paulson, robin@bumblepuppy.org
 # https://github.com/robinpaulson/NZ_tides_csv_to_ical
 # Licence: GNU GPL 3+
 
-# requires "icalendar" module, which is not part of a defauly Python install (on Ubuntu, anyway)
+# requires "icalendar" module, which is not part of a defauly Python install
+# (on Ubuntu, anyway)
 
 import calendar
 import csv
