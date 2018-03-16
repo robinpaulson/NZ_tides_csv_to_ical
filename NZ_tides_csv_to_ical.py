@@ -3,12 +3,14 @@
 # This Python script will convert tide date from csv to iCal files.
 # csv files are published by Land Information New Zealand
 # They can be obtained from: http://www.linz.govt.nz/sea/tides/tide-predictions
-# To convert: ./NZ_tides_csv_to_ical.py <tide_csv>
-# where <tide_csv> is the appropriate csv file for your location
+# To convert: ./NZ_tides_csv_to_ical.py "tide_csv" "leeway"
+# where "tide_csv" is the appropriate csv file for your location
+# and "leeway" is the amount of time either side of high tide to block out for the calendar event
 # Author: Robin Paulson, robin@bumblepuppy.org
 # https://github.com/robinpaulson/NZ_tides_csv_to_ical
 # Licence: GNU GPL 3+
 
+# requires "icalendar" module, which is not part of a defauly Python install (on Ubuntu, anyway)
 
 import calendar
 import csv
@@ -21,11 +23,12 @@ from datetime import datetime
 from datetime import timedelta
 from time import mktime
 
-leeway=2
-
 # the first two lines of the csv files are header, we ignore these
 read_line=3
 
+# add some info to the top of the .ics file to identify what it is for
+# we should probably set this to something meaningful/useful/consistent
+# with the ical format
 cal = icalendar.Calendar()
 cal.add('prodid', '-//NZ high tides calendar//')
 cal.add('version', '1.0')
@@ -65,6 +68,7 @@ with open(csv_file, 'rb') as csvfile:
 				# is the tide a high or low? TODO: find better ways to do this
 				# in Auckland, 1.6m is half way between max low and min high
 				if (float(tide_height) > 1.6):
+					# TODO: can we add leading zeroes by using format codes?
 					if (len(tide_month)==1):
 						tide_month='0'+tide_month
 					if (len(tide_date)==1):
