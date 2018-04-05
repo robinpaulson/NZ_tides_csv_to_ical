@@ -12,7 +12,7 @@
 # https://github.com/robinpaulson/NZ_tides_csv_to_ical
 # Licence: GNU GPL 3+
 
-# requires "icalendar" module, which is not part of a defauly Python install
+# requires "icalendar" module, which is not part of a default Python install
 # (on Ubuntu, anyway)
 
 import calendar
@@ -32,11 +32,13 @@ read_line=3
 # add some info to the top of the .ics file to identify what it is for
 # we should probably set this to something meaningful/useful/consistent
 # with the ical format
+# TODO: look up ical format for information on this
 cal = icalendar.Calendar()
 cal.add('prodid', '-//NZ high tides calendar//')
 cal.add('version', '1.0')
 
 # get the name of the csv file we are getting the data from
+# TODO: add graceful error-handling in case the user does not specify a file
 csv_file = sys.argv[1]
 
 # amount of time either side of high tide to block out
@@ -47,6 +49,7 @@ csv_file = sys.argv[1]
 if len(sys.argv) < 3:
 	leeway = 2
 else:
+	# TODO: print an error message and exit if the user specifies a leeway > 6
 	leeway = int(sys.argv[2])
 
 with open(csv_file, 'rb') as csvfile:
@@ -70,6 +73,9 @@ with open(csv_file, 'rb') as csvfile:
 			if len(tide_height) > 0:
 				# is the tide a high or low? TODO: find better ways to do this
 				# in Auckland, 1.6m is half way between max low and min high
+				# We can read first and second entries, compare to find which is
+				# highest, then read every other data point and create cal
+				# entries
 				if (float(tide_height) > 1.6):
 					# TODO: can we add leading zeroes by using format codes?
 					if (len(tide_month)==1):
@@ -90,8 +96,8 @@ with open(csv_file, 'rb') as csvfile:
 					event.add('dtstart', block_start)
 					event.add('dtend', block_end)
 					event.add('dtstamp', ht_dt)
-					# add the location field to the event
-					event.add('location',tide_location + ', New Zealand')
+					# add the location to the event
+					event.add('location',tide_location)
 					cal.add_component(event)
 			tide_num=tide_num+2
 f = open(tide_location+'_'+tide_year+'.ics', 'wb')
