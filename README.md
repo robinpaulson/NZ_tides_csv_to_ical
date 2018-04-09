@@ -1,5 +1,5 @@
 NZ_tides_csv_to_ical.
-Convert NZ tides files from csv to iCal format. These can be loaded into any calendar, such as Android and Thunderbird.
+Convert NZ tides files from csv to iCalendar format. These can be loaded into any compatible calendar, including the default Android calendar app (which may need an importer) and Thunderbird.
 The processing will add a blocked out event, by default 2 hours extra either side of high tide. This can be configured when the script is run - see below
 
 Author: Robin Paulson, robin@bumblepuppy.org
