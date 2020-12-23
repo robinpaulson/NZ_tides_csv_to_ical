@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # This Python script will convert tide date from csv to iCal files.
 # csv files are published by Land Information New Zealand
@@ -26,7 +26,7 @@ from datetime import datetime
 from datetime import timedelta
 from time import mktime
 
-# the first two lines of the csv files are header, we ignore these
+# the first three lines of the csv files are header, we ignore these
 read_line=3
 
 # add some info to the top of the .ics file to identify what it is for
@@ -52,7 +52,7 @@ else:
 	# TODO: print an error message and exit if the user specifies a leeway > 6
 	leeway = int(sys.argv[2])
 
-with open(csv_file, 'rb') as csvfile:
+with open(csv_file, 'r') as csvfile:
 	tide_reader = csv.reader(csvfile, delimiter=',')
 	mycsv=list(tide_reader)
 	tide_location=mycsv[0][1]
@@ -84,14 +84,16 @@ with open(csv_file, 'rb') as csvfile:
 						tide_date='0'+tide_date
 					full_time = tide_year + tide_month + tide_date + tide_time
 					ht_struct = time.strptime(full_time, '%Y%m%d%H:%M')
+					desc_struct = time.strptime(tide_time, '%H:%M')
 					# convert time from time to datetime formats
 					ht_dt = datetime.fromtimestamp(mktime(ht_struct))
+					desc_dt = datetime.fromtimestamp(mktime(desc_struct))
 					# calculate the offsets for the start and end of the block
 					block_start = ht_dt - timedelta(hours=leeway)
 					block_end = ht_dt + timedelta(hours=leeway)
 					event = icalendar.Event()
 					# add the tide height to the "summary" field
-					event.add('summary', tide_height)
+					event.add('summary', tide_height + "  " + str(tide_time))
 					# start and end of each block
 					event.add('dtstart', block_start)
 					event.add('dtend', block_end)
