@@ -92,3 +92,6 @@ ENV/
 *.csv
 *.ics
 *.ods
+case_test.py
+locations
+workflow
