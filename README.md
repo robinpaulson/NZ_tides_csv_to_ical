@@ -8,14 +8,14 @@ https://github.com/robinpaulson/NZ_tides_csv_to_ical
 
 csv files are published by Land Information New Zealand under a Creative Commons Licence and are freely distributable
 
-They can be obtained from: http://www.linz.govt.nz/sea/tides/tide-predictions
+They can be obtained from: https://www.linz.govt.nz/sea/tides/tide-predictions
 
-The "icalendar" python module is a required dependency
+The "icalendar" python module is a required dependency, it can be installed from `pip` and is often included in the default repositories of many UNIX-like operating systems. The other modules appear to be included in a standard Python 3 distribution, this may differ for your operating system.
 
 To convert files, run:
-
+```
 python NZ_tides_csv_to_ical.py "tide_csv" "leeway"
-
+```
 where "tide_csv" is the appropriate csv file for your location,
 
 and "leeway" is the time between the start of the event and high tide, also the time between high tide and the end of the event
